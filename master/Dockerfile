@@ -5,7 +5,7 @@ FROM spark_base_image:latest
 RUN SPARK_LOCAL_IP="$(hostname --ip-address)"
 
 # Copy start script 
-COPY ./scripts/run_master.sh ./run.sh
+COPY ../scripts/run_master.sh /home/sparker/run.sh
 USER root 
 RUN chmod +x /home/sparker/run.sh 
 
@@ -23,9 +23,6 @@ COPY ./conf-master/yarn-site.xml ./hadoop-$HADOOP_VERSION/etc/hadoop
 COPY ./conf-master/spark-defaults.conf ./spark-$SPARK_VERSION-bin-hadoop3/conf
 RUN $HADOOP_HOME/bin/hdfs namenode -format
 
- 
-ENTRYPOINT ./run.sh 
-
 # ssh
 EXPOSE 22 
 # YARN ports
@@ -36,3 +33,5 @@ EXPOSE 8033
 EXPOSE 8088
 EXPOSE 10020
 EXPOSE 19888
+ 
+ ENTRYPOINT ["bash", "./run.sh"] 
