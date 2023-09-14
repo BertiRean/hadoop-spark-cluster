@@ -25,6 +25,8 @@ make build_master_image
 make build_slave_image
 ```
 Now we can create the cluster with a master and 3 slaves:
+
+NOTE: one point of attention is that the more slaves you put, the greater the amount of memory available in the cluster. By default, the cluster adds 8GB for each slave. As my PC has 32GB, I created a cluster with 2 containers that together use a total of 16GB. For my tests this is enough, but nothing prevents you from changing the settings to suit your needs if you wish)
 ```
 docker-compose up -d --scale slave=3
 ``` 
@@ -57,9 +59,13 @@ Spark, HDFS and YARN expose web UI used to track the execution of the applicatio
 Shared repositories can be used to, for example, put the JAR executed with spark-submit inside.
 
 # To get access and run spark-submit commands inside the cluster
+Get the container hash code. Type the following in a terminal:
+```
+docker ps
+```
 Type the following in a terminal:
 ```
-docker exec -it hadoop-spark-cluster-master-1 /bin/bash
+docker exec -it #hash_code_of_container /bin/bash
 ``` 
 If you have problems with docker container names, check it
 ```
