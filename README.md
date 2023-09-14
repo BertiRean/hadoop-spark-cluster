@@ -59,13 +59,13 @@ Spark, HDFS and YARN expose web UI used to track the execution of the applicatio
 Shared repositories can be used to, for example, put the JAR executed with spark-submit inside.
 
 # To get access and run spark-submit commands inside the cluster
-Get the container hash code. Type the following in a terminal:
+Get the container Id. Type the following in a terminal:
 ```
 docker ps
 ```
 Type the following in a terminal:
 ```
-docker exec -it #hash_code_of_container /bin/bash
+docker exec -it #container_id /bin/bash
 ``` 
 If you have problems with docker container names, check it
 ```
@@ -75,7 +75,7 @@ docker ps --format '{{.Names}}'
 # Tests
 To verify that the cluster was correctly installed, launch _SparkPi_ example:
 ```
-spark-submit --class org.apache.spark.examples.SparkPi --master yarn --deploy-mode cluster --driver-memory 1g --executor-memory 1g --executor-cores 1 ~/spark-2.4.8-bin-hadoop2.7/examples/jars/spark-examples*.jar 1000
+spark-submit --class org.apache.spark.examples.SparkPi --master yarn --deploy-mode cluster --driver-memory 512m --executor-memory 512m --executor-cores 1 ~/spark-2.4.8-bin-hadoop2.7/examples/jars/spark-examples*.jar 10000
 ```
 
 # Troubleshooting
