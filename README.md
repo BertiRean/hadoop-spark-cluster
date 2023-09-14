@@ -59,11 +59,11 @@ Spark, HDFS and YARN expose web UI used to track the execution of the applicatio
 Shared repositories can be used to, for example, put the JAR executed with spark-submit inside.
 
 # To get access and run spark-submit commands inside the cluster
-Get the container Id. Type the following in a terminal:
+Get the container Id of master node.
 ```
 docker ps
 ```
-Type the following in a terminal:
+Type the following in a terminal to access container terminal:
 ```
 docker exec -it #container_id /bin/bash
 ``` 
