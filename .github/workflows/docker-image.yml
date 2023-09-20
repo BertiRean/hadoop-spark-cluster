@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Spark Base Image
+      run: docker build -f ./Dockerfile . -t  spark_base_image:$(date +%s)
+    - name: Build the Spark Master Image
+      run: docker build -f ./master/Dockerfile . -t  spark_compose_master:$(date +%s)
+    - name: Build  the Spark Slave Image
+      run: docker build -f ./slave/Dockerfile . -t  spark_compose_slave:$(date +%s)
