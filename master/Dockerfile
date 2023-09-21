@@ -1,5 +1,5 @@
 # Get base image
-FROM spark_base_image:latest
+FROM lomero/spark-arq:spark-base
 
 # set the IP address Spark binds to on this node
 RUN SPARK_LOCAL_IP="$(hostname --ip-address)"
