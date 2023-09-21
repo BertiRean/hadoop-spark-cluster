@@ -1,5 +1,5 @@
 # Get base image
-FROM lomero/spark-arq:spark-base:latest
+FROM lomero/spark-arq:spark-base
 
 # Copy start script 
 COPY ../scripts/run_slave.sh ./run.sh
