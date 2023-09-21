@@ -40,5 +40,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: spark-base
+          tags:  lomero/spark-arq:spark-base
           labels: ${{ steps.meta.outputs.labels }}
